@@ -10,6 +10,8 @@ A collection of Agent Skills for product modeling and interactive prototyping. S
 
 This README is available in English. The detailed Skill guides, demo interfaces, and screenshots are currently in Chinese.
 
+[Try the cases online](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html) · [Style previews](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/style-preview.html) · [Component catalog](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/library.html)
+
 [Positioning](#positioning-and-capabilities) · [Choose a Skill](#choose-a-skill) · [Download and use](#download-and-use) · [Quick start](#quick-start) · [Examples](#usage-examples) · [Design resources](#design-resources) · [FAQ](#faq) · [Development](#development-and-maintenance) · [License](#license-and-sources)
 
 ## Positioning and capabilities
@@ -88,13 +90,13 @@ Codex automatically discovers local Skills. If a Skill does not appear, restart 
 
 ## Quick start
 
-### Try the cases without installing a Skill
+### Try the cases online without downloading or installing
 
-1. In the extracted repository, open `skills/hannes-requirement-to-design/assets/examples/`.
-2. Open `product-cases.html` in your browser. Use the navigation at the top to switch between the three cases.
+1. Open the [interactive cases online](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html) directly in your browser.
+2. Use the navigation at the top to switch between the initial reservation, existing-specification, and incremental-change cases.
 3. In a reservation case, click a slot labeled **Available** (`可预约`), enter a purpose, and save. In the item case, open a record's details and edit it. **Reset this case** (`重置本案例`) restores the initial data.
 
-These HTML files work offline when opened directly. Node.js and npm are not required. **On GitHub, clicking an HTML link usually shows its source. Download the files and open them locally to try the demos.**
+**Offline use:** Download and extract the repository, then open `skills/hannes-requirement-to-design/assets/examples/product-cases.html` in your browser to try the same cases. Node.js and npm are not required. The style previews and component catalog also work offline after downloading.
 
 ### Start with your own requirements
 
@@ -132,7 +134,7 @@ Clarify the roles, scope, and rules, then provide flows, pages, and an interacti
 
 ![Initial reservation case: resource timeline, occupancy, and available slots](skills/hannes-requirement-to-design/assets/examples/screenshots/reservation-v1-occupancy.png)
 
-[Read the case specification](skills/hannes-requirement-to-design/references/examples/reservation.md) · [View the HTML file](skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v1#/list) (open locally, then select `01 预约初版`, the initial reservation case)
+[Read the case specification](skills/hannes-requirement-to-design/references/examples/reservation.md) · [Try it online](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v1#/list)
 
 <details>
 <summary>2. Existing specification → search, details, and editing (expand for prompt and screenshot)</summary>
@@ -148,7 +150,7 @@ Fill only the gaps needed for this task, without rewriting the entire PRD.
 
 ![Item case: an edit form above the detail view, with status and description changes](skills/hannes-requirement-to-design/assets/examples/screenshots/items-edit-dialog.png)
 
-[Read the case specification](skills/hannes-requirement-to-design/references/examples/existing-spec.md) · [View the HTML file](skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=items#/list) (open locally, then select `02 已有规格`, the existing-specification case)
+[Read the case specification](skills/hannes-requirement-to-design/references/examples/existing-spec.md) · [Try it online](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=items#/list)
 
 </details>
 
@@ -167,7 +169,7 @@ action conditions, and feedback. Change only the affected parts and validate the
 
 ![Rule change: details explain the cancellation condition and disable an ineligible action](skills/hannes-requirement-to-design/assets/examples/screenshots/reservation-v2-cancel-rule.png)
 
-[Read the change case](skills/hannes-requirement-to-design/references/examples/incremental-change.md) · [View the HTML file](skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v2#/list) (open locally, then select `03 增量变更`, the incremental-change case)
+[Read the change case](skills/hannes-requirement-to-design/references/examples/incremental-change.md) · [Try it online](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v2#/list)
 
 </details>
 
@@ -185,8 +187,8 @@ After delivery, you can choose whether to retain lessons from the task. Compare 
 
 | Resource | Purpose |
 | --- | --- |
-| [Three style previews](skills/hannes-requirement-to-design/assets/style-preview.html) | Compare desktop and mobile styles inspired by Ant Design, TDesign, and Apple Web |
-| [Ant Design component catalog](skills/hannes-requirement-to-design/assets/library.html) | Try basic controls and combined filtering, table, detail, and editing interactions |
+| [Three style previews](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/style-preview.html) | Compare desktop and mobile styles inspired by Ant Design, TDesign, and Apple Web |
+| [Ant Design component catalog](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/library.html) | Try basic controls and combined filtering, table, detail, and editing interactions |
 | [Design specification](skills/hannes-requirement-to-design/design-spec.md) | Reference typography, colors, spacing, and component behavior |
 | [Design knowledge](skills/hannes-requirement-to-design/references/design-knowledge.json) · [Decision method](skills/hannes-requirement-to-design/references/design-decisions.md) | Select patterns by task, with applicability, anti-patterns, and sources |
 | [Component reuse and build guide](skills/hannes-requirement-to-design/references/component-library.md) | Find modular source code, dependencies, and build commands |
@@ -273,7 +275,7 @@ The following summary covers distributed materials, retained license texts, and 
 | **TDesign** | Reference for design principles and theme organization; the style preview is custom-built and does not bundle the official TDesign runtime | `Copyright (c) 2021-present TDesign`; [full MIT text](skills/hannes-requirement-to-design/references/licenses/tdesign-MIT.txt) |
 | **Other component runtime dependencies** | Transitive dependencies actually distributed in `library.html` | Each author's copyright and applicable license are retained; the current artifact embeds full notices for 54 runtime packages, available in the catalog |
 
-The **Dependency versions and full license notices** (`依赖版本与完整许可声明`) control at the bottom of the [component catalog](skills/hannes-requirement-to-design/assets/library.html) opens the complete runtime notices offline. The HTML also retains the same text. Exact versions are recorded in the [dependency lockfile](skills/hannes-requirement-to-design/assets/component-library/package-lock.json). The build tool esbuild uses MIT. It is not distributed as a runtime in that HTML; distributing the tool itself separately still requires compliance with its license.
+The **Dependency versions and full license notices** (`依赖版本与完整许可声明`) control at the bottom of the [component catalog](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/library.html) opens the complete runtime notices offline. The HTML also retains the same text. Exact versions are recorded in the [dependency lockfile](skills/hannes-requirement-to-design/assets/component-library/package-lock.json). The build tool esbuild uses MIT. It is not distributed as a runtime in that HTML; distributing the tool itself separately still requires compliance with its license.
 
 ### Apple-inspired styling, documentation, and trademarks
 

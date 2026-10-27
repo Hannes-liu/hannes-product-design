@@ -8,6 +8,8 @@
 
 **当前状态：** 主要在 Codex 中实践，持续完善中。包含两个可独立使用的 Skill、三个虚构案例、三套风格预览和一个 Ant Design 交互组件目录；其他 Agent 环境尚未独立验证。
 
+[在线体验案例](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html) · [风格预览](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/style-preview.html) · [组件目录](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/library.html)
+
 [定位与能力](#定位与能力) · [选择 Skill](#选择-skill) · [下载与使用](#下载与使用) · [快速开始](#快速开始) · [使用示例](#使用示例) · [设计资源](#设计资源) · [常见问题](#常见问题) · [开发与维护](#开发与维护) · [许可](#许可与来源)
 
 ## 定位与能力
@@ -85,13 +87,13 @@ Codex 会自动发现本地 Skill；未出现时可重启 Codex，再重新调�
 
 ## 快速开始
 
-### 先体验案例，无需安装
+### 先在线体验案例，无需下载或安装
 
-1. 在已解压的仓库中，进入 `skills/hannes-requirement-to-design/assets/examples/`。
-2. 用浏览器打开 `product-cases.html`，通过顶部导航切换三个案例。
+1. 点击[在线交互案例](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html)，直接在浏览器中打开。
+2. 通过顶部导航切换预约初版、已有规格和增量变更三个案例。
 3. 在预约案例中点击标有“可预约”的时段，填写用途并保存；在事项案例中打开详情并编辑。点击“重置本案例”可恢复数据。
 
-这些 HTML 可双击离线运行，无需 Node.js 或 npm。**在 GitHub 中点击 HTML 链接通常显示源码，请先下载再打开。**
+**离线使用：** 下载并解压仓库后，用浏览器打开 `skills/hannes-requirement-to-design/assets/examples/product-cases.html`，也可体验相同案例，无需 Node.js 或 npm。风格预览和组件目录同样支持下载后离线打开。
 
 ### 用自己的需求开始
 
@@ -125,7 +127,7 @@ Codex 会自动发现本地 Skill；未出现时可重启 Codex，再重新调�
 
 ![预约初版：资源时间轴、占用状态与可预约时段](skills/hannes-requirement-to-design/assets/examples/screenshots/reservation-v1-occupancy.png)
 
-[阅读案例规格](skills/hannes-requirement-to-design/references/examples/reservation.md) · [查看 HTML 文件](skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v1#/list)（本地打开后选择“01 预约初版”）
+[阅读案例规格](skills/hannes-requirement-to-design/references/examples/reservation.md) · [在线体验](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v1#/list)
 
 <details>
 <summary>2. 已有规格 → 查询、详情与编辑（展开提示词和截图）</summary>
@@ -140,7 +142,7 @@ Codex 会自动发现本地 Skill；未出现时可重启 Codex，再重新调�
 
 ![事项页面：在详情上打开编辑表单，修改状态和说明](skills/hannes-requirement-to-design/assets/examples/screenshots/items-edit-dialog.png)
 
-[阅读案例规格](skills/hannes-requirement-to-design/references/examples/existing-spec.md) · [查看 HTML 文件](skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=items#/list)（本地打开后选择“02 已有规格”）
+[阅读案例规格](skills/hannes-requirement-to-design/references/examples/existing-spec.md) · [在线体验](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=items#/list)
 
 </details>
 
@@ -158,7 +160,7 @@ Codex 会自动发现本地 Skill；未出现时可重启 Codex，再重新调�
 
 ![规则变更：详情解释取消条件，并禁用不满足条件的操作](skills/hannes-requirement-to-design/assets/examples/screenshots/reservation-v2-cancel-rule.png)
 
-[阅读变更案例](skills/hannes-requirement-to-design/references/examples/incremental-change.md) · [查看 HTML 文件](skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v2#/list)（本地打开后选择“03 增量变更”）
+[阅读变更案例](skills/hannes-requirement-to-design/references/examples/incremental-change.md) · [在线体验](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/examples/product-cases.html?case=reservation-v2#/list)
 
 </details>
 
@@ -176,8 +178,8 @@ Codex 会自动发现本地 Skill；未出现时可重启 Codex，再重新调�
 
 | 资源 | 用途 |
 | --- | --- |
-| [三套风格预览](skills/hannes-requirement-to-design/assets/style-preview.html) | 比较 Ant Design、TDesign、Apple Web 的桌面与移动风格 |
-| [Ant Design 组件目录](skills/hannes-requirement-to-design/assets/library.html) | 实际操作基础控件及筛选、表格、详情、编辑的组合示例 |
+| [三套风格预览](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/style-preview.html) | 比较 Ant Design、TDesign、Apple Web 的桌面与移动风格 |
+| [Ant Design 组件目录](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/library.html) | 实际操作基础控件及筛选、表格、详情、编辑的组合示例 |
 | [设计规范](skills/hannes-requirement-to-design/design-spec.md) | 查阅排版、色彩、间距与组件行为 |
 | [设计知识](skills/hannes-requirement-to-design/references/design-knowledge.json) · [决策方法](skills/hannes-requirement-to-design/references/design-decisions.md) | 按任务选择方案，查阅适用条件、反模式和来源 |
 | [组件复用与构建](skills/hannes-requirement-to-design/references/component-library.md) | 取用模块化源码、依赖与构建命令 |
@@ -264,7 +266,7 @@ hannes-product-design/
 | **TDesign** | 设计原则与主题组织参考；风格预览为自制实现，未打包官方 TDesign 运行时 | `Copyright (c) 2021-present TDesign`；[MIT 原文](skills/hannes-requirement-to-design/references/licenses/tdesign-MIT.txt) |
 | **其他组件运行时依赖** | 随 `library.html` 实际分发的传递依赖 | 按各原作者的版权和许可保留；当前产物内嵌 54 个运行时包的完整声明，可在组件目录中查看 |
 
-[组件目录](skills/hannes-requirement-to-design/assets/library.html)底部的“依赖版本与完整许可声明”可离线查看完整运行时版权与许可；HTML 内也保留同一份文本。精确版本见[依赖锁文件](skills/hannes-requirement-to-design/assets/component-library/package-lock.json)。构建工具 esbuild 使用 MIT，不作为该 HTML 的运行时分发；若另行分发工具本体，仍须遵守其许可。
+[组件目录](https://hannes-liu.github.io/hannes-product-design/skills/hannes-requirement-to-design/assets/library.html)底部的“依赖版本与完整许可声明”可离线查看完整运行时版权与许可；HTML 内也保留同一份文本。精确版本见[依赖锁文件](skills/hannes-requirement-to-design/assets/component-library/package-lock.json)。构建工具 esbuild 使用 MIT，不作为该 HTML 的运行时分发；若另行分发工具本体，仍须遵守其许可。
 
 ### Apple 风格、文档与商标
 
