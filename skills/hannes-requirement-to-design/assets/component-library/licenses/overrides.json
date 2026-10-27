@@ -1,0 +1,7 @@
+{
+  "@ant-design/icons-svg@4.6.0": {
+    "file": "ant-design-icons-MIT.txt",
+    "source": "https://github.com/ant-design/ant-design-icons/blob/7f2516ac91226d2b41f93b35cb5197c8d94f7189/LICENSE",
+    "reason": "npm tarball omits the LICENSE file; registry gitHead matches this upstream commit"
+  }
+}

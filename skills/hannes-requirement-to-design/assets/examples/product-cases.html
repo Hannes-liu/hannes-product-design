@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>产品设计案例 · 可操作演示</title>
+<style>
+:root{color-scheme:light;--brand:#0052d9;--ink:#202b3d;--muted:#62718a;--line:#dce3ed;--space:12px;--row-pad:12px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;color:var(--ink);background:#f4f6fa}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{outline-offset:4px}button{cursor:pointer;border:1px solid var(--line);border-radius:5px;background:white;padding:8px 14px;color:var(--ink)}button:hover:enabled{border-color:var(--brand);color:var(--brand)}button:disabled{cursor:not-allowed;opacity:.5}.primary{background:var(--brand);color:white;border-color:var(--brand)}button.primary:hover:enabled{color:white;background:#003cab}.danger{color:#a72328}a{color:var(--brand);text-underline-offset:3px}header{background:#fff;border-bottom:1px solid var(--line);padding:20px 32px;display:flex;gap:24px;align-items:center;justify-content:space-between}header strong{font-size:16px}nav{display:flex;gap:8px;flex-wrap:wrap}nav a{padding:7px 12px;text-decoration:none;border-radius:4px}nav a[aria-current=page]{background:#e9f0ff;color:#003cab}.shell{max-width:1280px;margin:auto;padding:32px}.eyebrow{color:var(--brand);font-size:12px;font-weight:700;letter-spacing:2px}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin:12px 0 24px}h1{font-size:28px;line-height:38px;margin:0 0 10px}p{line-height:1.7;margin:8px 0}.muted,small{color:var(--muted)}.notice{border-left:3px solid var(--brand);padding:10px 16px;background:#edf3ff;margin-bottom:20px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}.stat{background:white;border:1px solid var(--line);border-radius:8px;padding:18px 22px}.stat strong{display:block;font-size:28px;line-height:38px;margin-top:8px;font-variant-numeric:tabular-nums}.panel{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}.toolbar{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:end;flex-wrap:wrap}.toolbar label{min-width:150px;margin:0}.toolbar input{width:240px}.toolbar input,.toolbar select{height:36px;padding:7px 10px}.table-wrap{overflow:auto}table{width:100%;min-width:720px;border-collapse:collapse;table-layout:fixed}th,td{text-align:left;border-bottom:1px solid #edf0f5;padding:var(--row-pad) 20px;vertical-align:middle;line-height:22px;overflow-wrap:anywhere}th{background:#f8fafc;font-size:12px;color:var(--muted);font-weight:600}th:first-child{width:32%}th:last-child{width:100px}td .row-title{font-weight:500}.tag{display:inline-block;border-radius:4px;padding:1px 7px;background:#edf3ff;color:#17478b;font-size:12px}.tag.done{background:#e7f5ec;color:#196837}.tag.cancelled{background:#f0f2f5;color:#596578}.pager{padding:14px 20px;display:flex;gap:12px;align-items:center;justify-content:flex-end}.empty{padding:48px 24px;text-align:center;color:var(--muted)}#feedback{min-height:24px;margin:16px 0;color:#165c31}footer{margin-top:24px;color:var(--muted);font-size:12px}dialog{border:1px solid var(--line);border-radius:10px;padding:0;max-width:calc(100vw - 40px);max-height:calc(100vh - 40px);width:540px;box-shadow:0 20px 80px #1e315433}dialog::backdrop{background:#14244255}dialog.drawer{margin:0 0 0 auto;height:100dvh;max-height:100dvh;max-width:min(580px,calc(100vw - 32px));width:580px;border-radius:0;border-width:0 0 0 1px}.dialog-head{display:flex;gap:16px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:20px 24px;position:sticky;top:0;background:white;z-index:1}h2{font-size:20px;line-height:28px;margin:0}.dialog-body{padding:24px}.dialog-foot{padding:16px 24px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:0;background:white}.stack{display:grid;gap:18px}label{display:grid;gap:6px;color:#33445f}input,select,textarea{background:white;border:1px solid #b9c5d6;border-radius:5px;padding:9px 11px;min-width:0;max-width:100%;color:var(--ink)}textarea{min-height:90px;resize:vertical}input[type=checkbox]{width:16px;height:16px}.inline-check{display:flex;align-items:center;gap:8px}.error{color:#a72328;min-height:24px;line-height:22px;margin-bottom:12px}.error:empty{display:none}dl{display:grid;grid-template-columns:100px 1fr;gap:14px;margin:0}dt{color:var(--muted)}dd{margin:0;overflow-wrap:anywhere;line-height:24px}.rule{background:#f4f7fc;padding:14px;margin-top:24px;font-size:13px}body[data-case=reservation-v2]{--row-pad:16px}button.link{padding:2px 0;border:0;background:none;color:var(--brand)}.source{font-family:ui-monospace,monospace}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0)}@media(max-width:800px){header{padding:16px;align-items:flex-start;flex-direction:column;gap:12px}.shell{padding:20px 16px}.stats{gap:8px}.stat{padding:14px}.heading{flex-direction:column}.toolbar input{width:100%}.toolbar label{flex:1}h1{font-size:24px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* 资源时段视图：时间坐标与占用读取同一份预约记录，留白不推导为开放。 */
+[hidden]{display:none!important}.schedule{margin-bottom:24px}.schedule-head{padding:22px 24px 16px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.schedule-head h2{font-size:19px}.schedule-head p{font-size:13px;margin-bottom:0}.schedule-date{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;white-space:nowrap}.schedule-controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:0 24px 18px}.schedule-controls label{display:flex;align-items:center;gap:8px;font-size:13px}.schedule-controls select{padding:6px 10px}.legend{margin-left:auto;display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:#52637b}.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:12px;height:12px;border:1px solid #b9c5d6;border-radius:3px;display:inline-block}.legend .mine{background:#dbe9ff;border-color:#75a3ef}.legend .other{background:#e9edf3}.legend .free{background:#e8f6ef;border-color:#61a982}.legend .closed{background:repeating-linear-gradient(135deg,#f2f4f7 0 3px,#e4e9ef 3px 4px)}.schedule-scroll{overflow:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.schedule-grid{min-width:860px}.axis,.schedule-row{display:grid;grid-template-columns:152px minmax(0,1fr)}.axis{height:42px;background:#f8fafc;color:var(--muted);font-size:12px}.resource-heading,.resource-name{padding:12px 18px;position:sticky;left:0;z-index:2;border-right:1px solid var(--line);background:#fff}.resource-heading{background:#f8fafc;display:flex;align-items:center}.ticks{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));position:relative;padding-right:0}.ticks span{padding:12px 0 8px 6px;border-left:1px solid #e6eaf1;font-variant-numeric:tabular-nums}.ticks .axis-end{position:absolute;right:3px;top:0;border:none}.schedule-row{border-top:1px solid #e6eaf1;min-height:106px}.resource-name{display:flex;flex-direction:column;justify-content:center;gap:8px;font-weight:600;font-size:14px}.resource-name small{font-weight:400;font-size:12px}.track{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));position:relative;background:repeating-linear-gradient(135deg,#f7f8fa 0 5px,#edf0f4 5px 6px);min-width:0}.track:before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(to right,transparent 0 calc(12.5% - 1px),#dfe5ed calc(12.5% - 1px) 12.5%)}.slot-block{position:relative;z-index:1;margin:15px 3px;min-width:0;padding:9px 6px;border-radius:5px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;font-size:12px;line-height:18px;text-align:left;white-space:normal;overflow-wrap:anywhere}.slot-block strong{font-size:12px;font-weight:600;letter-spacing:-.2px;font-variant-numeric:tabular-nums;white-space:nowrap}.slot-block.mine{background:#e6efff;border-color:#90b5f4;color:#17468c}.slot-block.other{background:#e7ebf1;border-color:#c4cdd9;color:#4a5970}.slot-block.free{background:#eefaf3;border:1px dashed #65a982;color:#236b44}.slot-block:hover:enabled{filter:brightness(.97);border-color:var(--brand)}.slot-block:focus-visible{outline:3px solid #0052d9;outline-offset:1px}.slot-block:disabled{opacity:.65}.available-strip{padding:16px 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px}.available-strip strong{font-weight:600;margin-right:4px}.available-strip button{font-size:12px;padding:7px 10px;border-color:#b6d9c5;color:#236b44;background:#f5fcf8}.schedule-note{padding:0 24px 18px;font-size:12px;color:var(--muted);margin:0}.list-title{font-size:18px;margin:28px 0 14px}.stats{margin-bottom:20px}.stat{padding:12px 20px}.stat strong{font-size:24px;line-height:30px;margin-top:4px}.shell{max-width:1420px;padding-top:24px}.heading{margin-bottom:18px}h1{font-size:26px;line-height:34px}.notice{font-size:13px}.schedule-empty{padding:26px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><strong>HANNES / 产品方案案例</strong><nav aria-label="案例选择"><a href="?case=reservation-v1#/list" data-case="reservation-v1">01 预约初版</a><a href="?case=items#/list" data-case="items">02 已有规格</a><a href="?case=reservation-v2#/list" data-case="reservation-v2">03 增量变更</a></nav></header>
+<main class="shell">
+  <div class="eyebrow" id="eyebrow"></div>
+  <div class="heading"><div><h1 id="title"></h1><p class="muted" id="subtitle"></p></div><button id="reset">重置本案例</button></div>
+  <aside class="notice" id="context"></aside>
+  <section id="schedule" class="panel schedule" role="region" aria-label="资源时段占用" hidden></section>
+  <section class="stats" aria-label="当前演示数据统计" id="stats"></section>
+  <h2 id="list-title" class="list-title">我的预约</h2>
+  <section class="panel" aria-label="业务列表"><form class="toolbar" id="filters"><label>关键词<input type="search" id="query" placeholder="搜索" autocomplete="off"></label><label>状态<select id="status"><option value="">全部状态</option></select></label><button class="primary" id="create" type="button">新建预约</button></form><div class="table-wrap" id="table"></div><div class="pager"><span id="page-info"></span><button id="prev">上一页</button><button id="next">下一页</button></div></section>
+  <p id="feedback" role="status" aria-live="polite"></p>
+  <footer>虚构案例 · 原生 HTML / CSS / JavaScript 自制实现，参考 TDesign 风格，未引入官方组件库。数据仅存内存，刷新恢复初始状态。固定演示时钟，不代表真实服务、权限或持久化。</footer>
+</main>
+<dialog id="detail" class="drawer" aria-labelledby="detail-title"></dialog>
+<dialog id="editor" aria-labelledby="editor-title"></dialog>
+<script>
+'use strict';
+// 案例配置与共享规则：两个预约版本只通过取消阈值和局部行间距区分。
+const modes=['reservation-v1','items','reservation-v2'];
+const requested=new URLSearchParams(location.search).get('case')||modes[0];
+const mode=modes.includes(requested)?requested:modes[0];
+const isItems=mode==='items';
+const now=Date.parse('2030-06-18T09:00:00+08:00');
+const minCancelMinutes=mode==='reservation-v2'?60:0;
+document.body.dataset.case=mode;
+const $=s=>document.querySelector(s);
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stamp=time=>Date.parse(`2030-06-18T${time}:00+08:00`);
+const slots=[{id:'S1',resource:'协作间 A',start:'09:30',end:'10:00'},{id:'S2',resource:'协作间 A',start:'10:00',end:'10:30'},{id:'S3',resource:'协作间 A',start:'10:30',end:'11:00'},{id:'S4',resource:'协作间 A',start:'11:00',end:'12:00'},{id:'S5',resource:'协作间 B',start:'11:00',end:'12:00'},{id:'S6',resource:'协作间 B',start:'12:00',end:'12:30'}];
+const initialBookings=[{id:'B001',slot:'S1',owner:'me',purpose:'讨论阅读计划',status:'booked'},{id:'B002',slot:'S2',owner:'me',purpose:'制作手工作品',status:'booked'},{id:'B003',slot:'S5',owner:'me',purpose:'准备分享材料',status:'booked'},{id:'B004',slot:'S4',owner:'other',purpose:'',status:'booked'}];
+const initialItems=Array.from({length:8},(_,i)=>({id:`I00${i+1}`,name:['整理资料目录','核对下周活动安排','记录一个很长的事项名称，用于检查表格换行及详情展示是否保留完整内容','准备讨论材料','校对标题','更新示例图片说明','整理收尾事项','提交复盘提纲'][i],owner:i%2?'阿澄':'小禾',status:i===5?'done':'open',note:`这是第 ${i+1} 条虚构事项说明。`}));
+let bookings=structuredClone(initialBookings),items=structuredClone(initialItems),serial=5;
+const view={query:'',status:'',page:1,size:3,scroll:0};
+const scheduleView={resource:'',duration:0};
+const resources=[...new Set(slots.map(s=>s.resource))];
+const minutes=time=>Number(time.slice(0,2))*60+Number(time.slice(3));
+const occupancy=slot=>bookings.find(row=>{const other=getSlot(row);return row.status==='booked'&&other.resource===slot.resource&&stamp(slot.start)<stamp(other.end)&&stamp(other.start)<stamp(slot.end)});
+let active=null,detailTrigger=null,editorTrigger=null,busy=false;
+const label=status=>({booked:'待开始',cancelled:'已取消',open:'进行中',done:'已完成'}[status]||status);
+const tag=status=>`<span class="tag ${esc(status)}">${label(status)}</span>`;
+const ownBookings=()=>bookings.filter(row=>row.owner==='me');
+const getRows=()=>isItems?items:ownBookings();
+const getSlot=row=>slots.find(slot=>slot.id===row.slot);
+const canCancel=row=>row&&row.owner==='me'&&row.status==='booked'&&stamp(getSlot(row).start)>now&&(stamp(getSlot(row).start)-now)/60000>=minCancelMinutes;
+const occupied=slot=>Boolean(occupancy(slot));
+const ruleText=()=>minCancelMinutes?'本人仅可在开始前至少 60 分钟取消，恰好 60 分钟允许。':'本人仅可在开始时间到达前取消。';
+const say=text=>{$('#feedback').textContent=text};
+// 任务视图：统一时间轴，固定日期与预设窗口；不开放的格子不能预约。
+function matchingFreeSlots(){return slots.filter(s=>(!scheduleView.resource||s.resource===scheduleView.resource)&&!occupied(s)&&minutes(s.end)-minutes(s.start)>=scheduleView.duration)}
+function renderSchedule(){
+  if(isItems)return;
+  const free=matchingFreeSlots(),visible=resources.filter(r=>!scheduleView.resource||r===scheduleView.resource);
+  $('#schedule').hidden=false;
+  $('#schedule').innerHTML=`<div class="schedule-head"><div><h2>资源时段占用</h2><p class="muted">先比较占用，再点选空闲时段。每个色块代表一个完整的预设时段。</p></div><div class="schedule-date">2030年6月18日 · 周二<br><small>UTC+08:00 · 固定演示日</small></div></div>
+  <div class="schedule-controls"><label>资源<select id="schedule-resource" aria-label="占用图资源"><option value="">全部资源</option>${resources.map(r=>`<option ${scheduleView.resource===r?'selected':''}>${esc(r)}</option>`).join('')}</select></label><label>所需时长<select id="schedule-duration" aria-label="所需时长"><option value="0">不限时长</option><option value="30" ${scheduleView.duration===30?'selected':''}>至少 30 分钟</option><option value="60" ${scheduleView.duration===60?'selected':''}>至少 60 分钟</option></select></label><div class="legend" aria-label="占用图图例"><span><i class="mine"></i>本人预约</span><span><i class="other"></i>他人占用</span><span><i class="free"></i>可预约</span><span><i class="closed"></i>未开放</span></div></div>
+  <div class="schedule-scroll" tabindex="0" role="group" aria-label="占用时间轴，可横向滚动"><div class="schedule-grid"><div class="axis"><div class="resource-heading">资源 / 时间</div><div class="ticks">${['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30'].map(t=>`<span>${t}</span>`).join('')}<span class="axis-end">13:00</span></div></div>${visible.map(resource=>`<div class="schedule-row"><div class="resource-name">${esc(resource)}<small>按预设时段预约</small></div><div class="track" role="group" aria-label="${esc(resource)}占用情况">${slots.filter(s=>s.resource===resource).map(slot=>{
+    const booking=occupancy(slot),kind=booking?(booking.owner==='me'?'mine':'other'):'free',tooShort=!booking&&minutes(slot.end)-minutes(slot.start)<scheduleView.duration;
+    const title=booking?(kind==='mine'?'本人预约':'他人占用'):tooShort?'时长不足':'可预约';
+    const column=1+(minutes(slot.start)-540)/30,span=(minutes(slot.end)-minutes(slot.start))/30;
+    return `<button class="slot-block ${kind}" data-slot="${slot.id}" ${kind==='mine'?`data-detail="${booking.id}"`:''} ${tooShort?'disabled':''} style="grid-column:${column} / span ${span}" aria-label="${esc(resource)} ${slot.start}—${slot.end} ${title}"><strong>${slot.start}–${slot.end}</strong><span>${title}</span></button>`;
+  }).join('')}</div></div>`).join('')}</div></div>
+  <div class="available-strip" role="status" aria-live="polite"><strong>符合条件的空闲时段 · ${free.length}</strong>${free.length?free.map(s=>`<button data-available="${s.id}">${esc(s.resource)} ${s.start}–${s.end}</button>`).join(''):'<span class="muted">暂无符合条件的预设时段。请调整资源或时长；不会拼接其他窗口。</span>'}</div>
+  <p class="schedule-note">斜纹区域未开放，不代表可预约。时长筛选不隐藏已占用区间；下方“我的预约”筛选不改变占用图。Tab 切换时段，Enter / 空格打开。</p>`;
+  $('#schedule-resource').onchange=e=>{scheduleView.resource=e.target.value;renderSchedule();$('#schedule-resource').focus()};
+  $('#schedule-duration').onchange=e=>{scheduleView.duration=Number(e.target.value);renderSchedule();$('#schedule-duration').focus()};
+  document.querySelectorAll('[data-slot]').forEach(button=>button.onclick=()=>{
+    const slot=slots.find(s=>s.id===button.dataset.slot),row=occupancy(slot);
+    if(!row){createBooking(slot.id);return}
+    if(row.owner==='me'){view.scroll=window.scrollY;detailTrigger=button;location.hash=`/detail/${row.id}`;return}
+    openEditor('时段已占用',`<p>${esc(slot.resource)} · 2030-06-18 ${slot.start}—${slot.end}</p><p>该时段由其他成员占用，无法预约。为保护隐私，不提供预约人、用途或操作入口。</p>`,'知道了',()=>$('#editor').close());
+  });
+  document.querySelectorAll('[data-available]').forEach(button=>button.onclick=()=>createBooking(button.dataset.available));
+}
+function filtered(){return getRows().filter(row=>{const text=isItems?`${row.name} ${row.owner}`:`${getSlot(row).resource} ${row.purpose}`;return text.toLowerCase().includes(view.query.toLowerCase())&&(!view.status||view.status===row.status)})}
+function render(){
+  renderSchedule();
+  const all=getRows(),matches=filtered(),pages=Math.max(1,Math.ceil(matches.length/view.size));view.page=Math.min(view.page,pages);
+  const stats=isItems?[['全部事项',all.length],['进行中',all.filter(r=>r.status==='open').length],['已完成',all.filter(r=>r.status==='done').length]]:[['我的预约',all.length],['待开始',all.filter(r=>r.status==='booked').length],['可用时段',slots.filter(s=>!occupied(s)).length]];
+  $('#stats').innerHTML=stats.map(([name,value])=>`<div class="stat"><span class="muted">${name}</span><strong>${value}</strong></div>`).join('');
+  const rows=matches.slice((view.page-1)*view.size,view.page*view.size);
+  $('#table').innerHTML=rows.length?`<table><thead><tr><th>${isItems?'事项名称':'资源与用途'}</th><th>${isItems?'负责人':'时段（UTC+08:00）'}</th><th>状态</th><th>操作</th></tr></thead><tbody>${rows.map(row=>`<tr><td><div class="row-title">${esc(isItems?row.name:getSlot(row).resource)}</div><small>${esc(isItems?row.id:row.purpose)}</small></td><td>${esc(isItems?row.owner:`${getSlot(row).start}—${getSlot(row).end}`)}</td><td>${tag(row.status)}</td><td><button class="link" data-detail="${row.id}" aria-label="查看 ${esc(isItems?row.name:row.id)}">查看详情</button></td></tr>`).join('')}</tbody></table>`:`<div class="empty">没有符合当前条件的记录。请调整关键词或状态。</div>`;
+  $('#page-info').textContent=`共 ${matches.length} 条 · 第 ${view.page} / ${pages} 页`;
+  $('#prev').disabled=view.page<=1;$('#next').disabled=view.page>=pages;
+  document.querySelectorAll('#table [data-detail]').forEach(button=>button.onclick=()=>{view.scroll=window.scrollY;detailTrigger=button;location.hash=`/detail/${button.dataset.detail}`});
+}
+function detailContent(row){
+  if(!row)return `<div class="dialog-head"><h2 id="detail-title">记录不存在</h2><button data-close-detail>关闭详情</button></div><div class="dialog-body"><p>该链接未对应当前案例中的可见记录。</p><button data-close-detail>返回列表</button></div>`;
+  const slot=!isItems&&getSlot(row);
+  return `<div class="dialog-head"><h2 id="detail-title">${isItems?'事项详情':'预约详情'}</h2><button data-close-detail>关闭详情</button></div><div class="dialog-body"><dl><dt>记录编号</dt><dd class="source">${row.id}</dd><dt>${isItems?'事项名称':'资源'}</dt><dd>${esc(isItems?row.name:slot.resource)}</dd><dt>${isItems?'负责人':'时段'}</dt><dd>${esc(isItems?row.owner:`2030-06-18 ${slot.start}—${slot.end}`)}</dd><dt>状态</dt><dd>${tag(row.status)}</dd><dt>${isItems?'说明':'用途'}</dt><dd>${esc(isItems?row.note:row.purpose)}</dd></dl>${isItems?'':`<div class="rule">${ruleText()}取消后释放时段；已取消记录保留。${canCancel(row)?'':row.status==='cancelled'?'该预约已取消。':'当前不满足取消条件。'}</div>`}</div><div class="dialog-foot">${isItems?'<button class="primary" id="edit-item">编辑事项</button>':`<button class="danger" id="cancel-booking" ${canCancel(row)?'':'disabled'}>取消预约</button>`}</div>`;
+}
+function refreshDetail(){
+  const row=getRows().find(r=>r.id===active);$('#detail').innerHTML=detailContent(row);
+  document.querySelectorAll('[data-close-detail]').forEach(button=>button.onclick=()=>$('#detail').close());
+  if($('#edit-item'))$('#edit-item').onclick=()=>editItem(row);
+  if($('#cancel-booking'))$('#cancel-booking').onclick=()=>confirmCancel(row);
+}
+function route(){
+  const hash=location.hash||'#/list',match=/^#\/detail\/([^/]+)$/.exec(hash);
+  if(match){active=match[1];refreshDetail();if(!$('#detail').open)$('#detail').showModal();return}
+  active=null;if($('#editor').open)$('#editor').close();if($('#detail').open)$('#detail').close();
+  if(hash!=='#/list')say('未找到该页面。已返回当前案例的列表。');
+  render();window.scrollTo(0,view.scroll);if(detailTrigger)restoreDetailFocus();
+}
+function openEditor(title,body,submitLabel,onSubmit){
+  editorTrigger=document.activeElement;
+  $('#editor').innerHTML=`<form novalidate id="edit-form"><div class="dialog-head"><h2 id="editor-title">${title}</h2><button type="button" data-close-editor>关闭</button></div><div class="dialog-body"><div id="form-error" class="error" role="alert"></div>${body}</div><div class="dialog-foot"><button type="button" data-close-editor>取消</button><button class="primary" type="submit">${submitLabel}</button></div></form>`;
+  document.querySelectorAll('[data-close-editor]').forEach(button=>button.onclick=()=>$('#editor').close());
+  $('#edit-form').onsubmit=event=>{event.preventDefault();if(busy)return;onSubmit(new FormData(event.target),event.target)};
+  $('#editor').showModal();
+}
+function fail(text,field){$('#form-error').textContent=text;if(field){field.setAttribute('aria-invalid','true');field.setAttribute('aria-describedby','form-error');field.focus()}}
+function success(message){$('#editor').close();render();if($('#detail').open)refreshDetail();say(message)}
+function submitLocal(form,action){
+  if(busy)return;busy=true;
+  try{
+    if(form.elements.simulateFail?.checked){form.elements.simulateFail.checked=false;fail('模拟保存失败，输入已保留。可以直接再次保存。');return}
+    action();
+  }finally{busy=false}
+}
+function confirmCancel(row){
+  if(!canCancel(row))return;
+  openEditor('确认取消预约',`<p>将取消 <strong>${esc(row.id)}</strong> 并释放 ${esc(getSlot(row).resource)} 的 ${getSlot(row).start}—${getSlot(row).end} 时段。</p><p class="muted">${ruleText()}确认前不会改变任何数据。</p>`,'确认取消',()=>{
+    if(!canCancel(row)){fail('当前状态或时间已不允许取消，数据未改变。');return}
+    row.status='cancelled';success('预约已取消，对应时段已释放。');
+  });
+}
+function createBooking(selectedSlot){
+  const initial=slots.some(s=>s.id===selectedSlot)?selectedSlot:(matchingFreeSlots()[0]?.id||slots.find(s=>!occupied(s))?.id||slots[0].id);
+  const optionList=()=>slots.map(slot=>`<option value="${slot.id}" ${slot.id===initial?'selected':''}>${esc(slot.resource)} · ${slot.start}—${slot.end} · ${occupied(slot)?'已占用':'可预约'}</option>`).join('');
+  openEditor('新建预约',`<div class="stack"><label>资源与时段<select name="slot" id="booking-slot">${optionList()}</select></label><label>用途<input name="purpose" id="booking-purpose" maxlength="100" autocomplete="off" required></label><label class="inline-check"><input type="checkbox" name="simulateFail">模拟本次保存失败（重试可恢复）</label><p class="muted">仅保存本人的预约。占用以资源和半开时间区间校验；已占用选项保留用于演示冲突反馈。</p></div>`,'保存预约',(data,form)=>{
+    const slot=slots.find(s=>s.id===data.get('slot')),purpose=String(data.get('purpose')||'').trim();
+    if(!purpose){fail('请填写预约用途。',form.elements.purpose);return}
+    if(!slot||stamp(slot.start)<=now){fail('请选择尚未开始的有效时段。',form.elements.slot);return}
+    if(occupied(slot)){fail('该资源时段已被占用，请重新选择。用途已保留。',form.elements.slot);return}
+    submitLocal(form,()=>{bookings.push({id:`B${String(serial++).padStart(3,'0')}`,slot:slot.id,owner:'me',purpose,status:'booked'});success('预约已保存，我的预约与可用时段同步更新。')});
+  });
+}
+function editItem(row){
+  if(!row||!items.includes(row))return;
+  openEditor('编辑事项',`<div class="stack"><label>事项名称<input name="name" id="item-name" value="${esc(row.name)}" maxlength="100" required></label><label>状态<select name="status" id="item-status"><option value="open" ${row.status==='open'?'selected':''}>进行中</option><option value="done" ${row.status==='done'?'selected':''}>已完成</option></select></label><label>说明<textarea name="note" id="item-note" maxlength="400">${esc(row.note)}</textarea></label><label class="inline-check"><input type="checkbox" name="simulateFail">模拟本次保存失败（重试可恢复）</label><p class="muted">负责人及记录编号保持不变。保存后若不再满足列表筛选，该记录会离开当前结果集。</p></div>`,'保存修改',(data,form)=>{
+    const name=String(data.get('name')||'').trim(),status=data.get('status');
+    if(!name){fail('请填写事项名称。',form.elements.name);return}
+    if(!['open','done'].includes(status)){fail('状态不合法。',form.elements.status);return}
+    submitLocal(form,()=>{row.name=name;row.status=status;row.note=String(data.get('note')||'');success('事项已保存，列表、详情和统计同步更新。')});
+  });
+}
+// 路由、查询与弹层：编辑不改变详情路由；原生 dialog 处理最上层 Escape。
+function restoreDetailFocus(){
+  requestAnimationFrame(()=>{
+    if($('#detail').open||$('#editor').open)return;
+    if(detailTrigger){
+      const replacement=detailTrigger.dataset.slot?document.querySelector(`[data-slot="${detailTrigger.dataset.slot}"]`):document.querySelector(`#table [data-detail="${detailTrigger.dataset.detail}"]`);
+      if(replacement)replacement.focus({preventScroll:true});else $('#query').focus({preventScroll:true});
+    }else $('#query').focus({preventScroll:true});
+    window.scrollTo(0,view.scroll);
+  });
+}
+$('#detail').addEventListener('close',()=>{
+  // close 和 hashchange 不能分别重绘列表，否则后一次重绘会移除已恢复焦点的节点。
+  if($('#detail').open)return;
+  if(location.hash.startsWith('#/detail/'))location.hash='/list';
+  else restoreDetailFocus();
+});
+$('#editor').addEventListener('close',()=>{
+  if($('#editor').open)return;
+  // 保存会重绘详情，原按钮可能已离开 DOM；按稳定标识恢复到新按钮。
+  const trigger=editorTrigger?.isConnected?editorTrigger:editorTrigger?.id?document.getElementById(editorTrigger.id):editorTrigger?.dataset.slot?document.querySelector(`[data-slot="${editorTrigger.dataset.slot}"]`):editorTrigger?.dataset.available?document.querySelector(`[data-available="${editorTrigger.dataset.available}"]`):null;
+  if(trigger&&!trigger.disabled)trigger.focus();
+  else if($('#detail').open)$('#detail [data-close-detail]')?.focus();
+  else if(!isItems)$('#create').focus({preventScroll:true});
+});
+$('#filters').onsubmit=event=>event.preventDefault();
+$('#query').oninput=event=>{view.query=event.target.value;view.page=1;render()};
+$('#status').onchange=event=>{view.status=event.target.value;view.page=1;render()};
+$('#prev').onclick=()=>{view.page--;render()};$('#next').onclick=()=>{view.page++;render()};
+$('#create').onclick=()=>createBooking();
+$('#reset').onclick=()=>{bookings=structuredClone(initialBookings);items=structuredClone(initialItems);serial=5;Object.assign(scheduleView,{resource:'',duration:0});Object.assign(view,{query:'',status:'',page:1,scroll:0});$('#query').value='';$('#status').value='';if($('#editor').open)$('#editor').close();if($('#detail').open)$('#detail').close();location.hash='/list';render();say('本案例已恢复初始演示数据。')};
+window.addEventListener('hashchange',route);
+document.querySelectorAll('nav a').forEach(link=>{if(link.dataset.case===mode)link.setAttribute('aria-current','page')});
+$('#eyebrow').textContent=isItems?'CASE 02 / 已有规格 → 交互页面':mode==='reservation-v2'?'CASE 03 / 规则变更 → 局部同步':'CASE 01 / 初步需求 → 产品方案';
+$('#title').textContent=isItems?'事项工作台':'共享时段预约';
+$('#subtitle').textContent=isItems?'查询、详情与编辑围绕同一条事项数据工作。':'查找可用时段，管理本人的预约。';
+$('#context').textContent=isItems?'既有规格：列表每页 3 条；负责人只读；名称必填；编辑失败保留草稿；详情关闭恢复查询和页码。':'演示时钟：2030-06-18 09:00（UTC+08:00）。'+ruleText()+'不包含审批和资源维护。';
+$('#query').placeholder=isItems?'搜索名称或负责人':'搜索资源或用途';
+$('#status').innerHTML='<option value="">全部状态</option>'+(isItems?['open','done']:['booked','cancelled']).map(status=>`<option value="${status}">${label(status)}</option>`).join('');
+$('#create').hidden=isItems;
+$('#list-title').textContent=isItems?'事项列表':'我的预约';
+if(!modes.includes(requested))say('案例标识无效，已打开预约初版。');
+render();route();
+</script>
+</body>
+</html>

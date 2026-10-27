@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hannes Requirement to Design"
+  short_description: "从需求与参考到 PC 和移动端交互原型，支持三套设计模板、增量迭代与验证交付"
+  default_prompt: "请使用 $hannes-requirement-to-design，结合当前需求和已有设计基线，制作并验证可操作的产品原型。"

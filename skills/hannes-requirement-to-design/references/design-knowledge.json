@@ -1,0 +1,1285 @@
+{
+  "schema_version": "1.0",
+  "description": "自编中文 Web 设计知识：先按目标端与项目约束定位，再按任务、信息密度查阅；不自动覆盖已确认设计。",
+  "reading_guide": "references/design-decisions.md",
+  "parameter_policy": "参数唯一维护于 design-spec.md 或目标项目规范；本数据只引用章节，不复制具体尺寸、色值或时间值。",
+  "categories": {
+    "baseline": "现有三套设计基线",
+    "pattern": "通用页面与交互模式",
+    "quality": "适用质量约束"
+  },
+  "sources": {
+    "SRC-HANNES": {
+      "name": "Hannes 自编 Web 设计建议与模板",
+      "type": "authored_guidance",
+      "reference": {
+        "file": "references/design-decisions.md",
+        "section": "按任务读取知识"
+      },
+      "version": "本知识文件的 schema_version 与随包文档",
+      "note": "当前记录均为自编选择建议；引用官方资料不表示其布局取舍由官方强制规定。"
+    },
+    "SRC-ANT": {
+      "name": "Ant Design 官方设计与组件参考",
+      "type": "official_reference",
+      "url": "https://ant.design/docs/spec/introduce",
+      "reference": {
+        "file": "design-spec.md",
+        "section": "Ant Design"
+      },
+      "version": "沿用本包设计参考提交 f8f5595ab5e891fff6a2a06c5b3b98af643d008e；真实组件目录版本另见组件库说明",
+      "note": "引用已记录的设计依据；项目实际组件 API 和版本须按目标工程核对。"
+    },
+    "SRC-TDESIGN": {
+      "name": "TDesign 官方设计体系与实现入口",
+      "type": "official_reference",
+      "url": "https://github.com/Tencent/tdesign",
+      "reference": {
+        "file": "design-spec.md",
+        "section": "TDesign"
+      },
+      "version": "沿用主仓库参考提交 522dcfd95b1ec5077a4d7c3fc5ff2bd1bd6cc3d0；各端实现版本分别核对",
+      "note": "不把某个实现版本视为整个体系统一版本，不要求项目升级。"
+    },
+    "SRC-APPLE": {
+      "name": "Apple Human Interface Guidelines 阅读参考",
+      "type": "official_reference",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/",
+      "reference": {
+        "file": "design-spec.md",
+        "section": "Apple HIG"
+      },
+      "version": "沿用随包文档既有核查记录；官方 HIG 持续更新",
+      "note": "本包为自制 Web 适配，不代表 Apple 官方 Web 组件实现，也不包含其文档镜像或资源。"
+    }
+  },
+  "records": [
+    {
+      "id": "BASE-ANT",
+      "category": "baseline",
+      "name": "Ant Design 设计基线",
+      "keywords": [
+        "Ant Design",
+        "antd",
+        "数据管理",
+        "表格",
+        "表单",
+        "桌面后台"
+      ],
+      "applies_to": {
+        "tasks": [
+          "数据比较",
+          "查询与编辑",
+          "连续处置"
+        ],
+        "platforms": [
+          "desktop-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "项目已选 Ant Design 时沿用其主题、组件与版本；以清晰比较、筛选和明确操作支持任务，页面骨架按业务组织。",
+      "rationale": "成熟表格、表单和反馈适合复杂桌面任务；体系可提供一致交互，但不决定具体导航或数据结构。",
+      "avoid": [
+        "不把示例深色侧栏当成所有项目的固定布局。",
+        "不因选择此风格就迁移已有的其他框架；移动任务不能直接压缩桌面表格。"
+      ],
+      "requirements": [
+        "使用项目实际组件 API 和覆盖值。",
+        "小字、密度、键盘与状态文字遵循共同质量要求。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "4. Ant Design"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "3. 共同规则"
+        },
+        {
+          "file": "references/component-library.md",
+          "section": "从哪里取"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES",
+        "SRC-ANT"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "BASE-TDESIGN",
+      "category": "baseline",
+      "name": "TDesign 设计基线",
+      "keywords": [
+        "TDesign",
+        "腾讯",
+        "协作",
+        "企业界面",
+        "Vue",
+        "统一组件"
+      ],
+      "applies_to": {
+        "tasks": [
+          "协作任务",
+          "查询与编辑",
+          "统一组件表达"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "项目已选 TDesign 时复用对应端与框架的实现；根据比较、浏览或协作任务决定表格、列表或卡片。",
+      "rationale": "统一组件和主题有利于协作产品保持一致；桌面与移动实现应分别匹配任务和依赖。",
+      "avoid": [
+        "不把示例协作卡片当作所有 TDesign 页面的固定布局。",
+        "不互抄 Ant React 与 TDesign Vue 的 API，不把框架差异当作纯主题切换。"
+      ],
+      "requirements": [
+        "分别核对目标端、组件版本与行为。",
+        "保持项目已有主题和明确覆盖值，避免重复引入另一体系。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "5. TDesign"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES",
+        "SRC-TDESIGN"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "BASE-APPLE",
+      "category": "baseline",
+      "name": "参考 Apple HIG 的 Web 基线",
+      "keywords": [
+        "Apple",
+        "HIG",
+        "内容层级",
+        "直接操作",
+        "轻量分组",
+        "Apple Web"
+      ],
+      "applies_to": {
+        "tasks": [
+          "内容浏览",
+          "轻量编辑",
+          "直接操作"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "以内容层级、清楚分组和直接操作建立 Web 表达，复杂控件沿用目标项目可用的成熟实现。",
+      "rationale": "弱化装饰、突出主要内容与操作有利于阅读；Web 页面仍需完整标签、焦点和取消语义。",
+      "avoid": [
+        "不虚构 Apple 官方 Web 控件包或原生能力。",
+        "高密度多列比较不能仅因风格改成难以比较的大卡片；不复制未授权字体、图标或素材。"
+      ],
+      "requirements": [
+        "桌面和移动分别组织导航与操作，保留浏览器能力。",
+        "组件语义、可访问性与数据契约优先于外观近似。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "6. Apple Design · 参考 HIG 的 Web 风格"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "3. 共同规则"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES",
+        "SRC-APPLE"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-DASHBOARD",
+      "category": "pattern",
+      "name": "分析看板与可执行下钻",
+      "keywords": [
+        "分析",
+        "看板",
+        "dashboard",
+        "chart",
+        "指标",
+        "趋势",
+        "下钻"
+      ],
+      "applies_to": {
+        "tasks": [
+          "观察指标",
+          "比较与定位异常",
+          "进入后续处理"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "先确定用户需要比较、观察趋势还是定位异常，再组织指标、图表和明细；可点击图表带筛选条件进入对应任务。",
+      "rationale": "信息组织围绕判断与下一步行动，图表的统计范围和业务列表能核对。",
+      "avoid": [
+        "不堆叠无任务目的的指标或装饰图表。",
+        "不写死互不对应的统计，不以颜色单独表达风险，不把不同职责的分析页复制为同一布局。"
+      ],
+      "requirements": [
+        "标明单位、时间范围、分母及空数据口径。",
+        "共享筛选和对象事实；下钻解释当前范围并提供明确返回。"
+      ],
+      "references": [
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "间距、密度与适配"
+        },
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "对象、动作与模拟"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-LIST",
+      "category": "pattern",
+      "name": "查询列表：表格、条目与卡片",
+      "keywords": [
+        "查询列表",
+        "table",
+        "list",
+        "card",
+        "表格",
+        "卡片",
+        "列比较"
+      ],
+      "applies_to": {
+        "tasks": [
+          "查找记录",
+          "跨记录比较",
+          "浏览内容"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "需要多列比较和批量处理时用表格；内容浏览用条目或卡片。根据主要任务排序信息，稳定标识对象并将状态、查询和分页受控。",
+      "rationale": "展示结构取决于比较方式与内容特征，避免为风格牺牲定位效率。",
+      "avoid": [
+        "不默认把所有对象都做成表格，或把所有移动页变成等高卡片。",
+        "不在详情返回时无故丢失查询和页码，不用展示名称代替稳定标识。"
+      ],
+      "requirements": [
+        "说明列、排序、分页与选中范围。",
+        "长内容换行或按项目约定截断，保留完整查看方式和表格内部滚动。"
+      ],
+      "references": [
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "references/component-library.md",
+          "section": "受控组件契约"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-DETAIL",
+      "category": "pattern",
+      "name": "完整详情、抽屉与短弹窗",
+      "keywords": [
+        "详情",
+        "detail",
+        "drawer",
+        "modal",
+        "dialog",
+        "抽屉",
+        "弹窗",
+        "上下文"
+      ],
+      "applies_to": {
+        "tasks": [
+          "查看对象",
+          "连续处理",
+          "局部编辑"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "复杂内容、长期编辑或独立定位用完整页面；短任务且需保留来源上下文可用抽屉；短确认或边界清楚的输入可用模态对话框。",
+      "rationale": "容器应适合任务长度、来源关系和离开方式，而非由组件是否现成决定。",
+      "avoid": [
+        "不把长流程或大表单挤进短弹窗，不为每个操作新增菜单。",
+        "不能让关闭上层预览同时退出底层任务。"
+      ],
+      "requirements": [
+        "定义标题、入口、对象不存在回退和关闭／返回语义。",
+        "管理焦点与未保存内容；移动布局重新安排操作，不照搬窄侧栏。"
+      ],
+      "references": [
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "页面与返回"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-FORM",
+      "category": "pattern",
+      "name": "创建与编辑表单",
+      "keywords": [
+        "表单",
+        "创建",
+        "编辑",
+        "form",
+        "validation",
+        "校验",
+        "草稿"
+      ],
+      "applies_to": {
+        "tasks": [
+          "填写信息",
+          "修改记录",
+          "提交结果"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "按用户理解的信息分组，保留持续字段标签，明确默认值、依赖和提交结果；校验失败就近解释、定位错误并保留输入。",
+      "rationale": "分组与反馈帮助用户理解所需信息，并能在失败后继续完成任务。",
+      "avoid": [
+        "不把占位符当作唯一标签，不把隐藏字段的清空策略留给控件偶然行为。",
+        "不因父页面重渲染重置草稿；不只通过控件属性保证业务合法。"
+      ],
+      "requirements": [
+        "区分新增、编辑、只读和字段权限。",
+        "明确取消、重复提交、异步失败与重试；具体必填和范围来自业务规则。"
+      ],
+      "references": [
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "references/component-library.md",
+          "section": "受控组件契约"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-STEPS",
+      "category": "pattern",
+      "name": "有依据的分步任务",
+      "keywords": [
+        "分步",
+        "步骤",
+        "wizard",
+        "stepper",
+        "长表单",
+        "阶段"
+      ],
+      "applies_to": {
+        "tasks": [
+          "分阶段填写",
+          "处理有依赖的复杂任务"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "仅当步骤存在明确依赖或信息负担需要分段时使用分步流程；显示进度、返回方式、保留内容与最终提交点。",
+      "rationale": "阶段划分帮助理解依赖，但每多一步都会增加导航和恢复成本。",
+      "avoid": [
+        "不因字段数量少量增加就强行拆步骤。",
+        "不把同一用户的不同步骤建成不同角色，不把切换步骤误写为业务提交。"
+      ],
+      "requirements": [
+        "明确每步条件和跨步校验，返回保留输入。",
+        "退出、刷新或恢复能力按实际持久化约定说明，不能把内存状态称为草稿已存储。"
+      ],
+      "references": [
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        },
+        {
+          "file": "references/requirements.md",
+          "section": "用户任务与流程图"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-FILTER",
+      "category": "pattern",
+      "name": "搜索、筛选与选项定位",
+      "keywords": [
+        "搜索",
+        "筛选",
+        "search",
+        "filter",
+        "select",
+        "autocomplete",
+        "多选"
+      ],
+      "applies_to": {
+        "tasks": [
+          "找到对象",
+          "缩小范围",
+          "选择已知选项"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "按用户知道名称还是特征选择搜索与筛选；选项多且名称可检索时用搜索选择，区分搜索文本与选中对象值。",
+      "rationale": "检索方式匹配用户已有信息，当前筛选和清空行为能够解释结果范围。",
+      "avoid": [
+        "不把自由输入自动当作已有对象，不默认显示所有低频筛选。",
+        "不在清空筛选后保留失效分页或悄悄提交表单。"
+      ],
+      "requirements": [
+        "展示已选、无匹配、加载或失败反馈，并支持有关的清空。",
+        "说明筛选何时生效、组合关系和日期口径；返回保留必要上下文。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "references/component-library.md",
+          "section": "受控组件契约"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-HIERARCHY",
+      "category": "pattern",
+      "name": "层级选择与关联清理",
+      "keywords": [
+        "层级",
+        "树",
+        "级联",
+        "tree",
+        "cascader",
+        "关联选择",
+        "路径"
+      ],
+      "applies_to": {
+        "tasks": [
+          "选择层级对象",
+          "定位分类路径"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "业务确有层级时按定位方式选择级联、树或路径搜索；回显完整路径，上级变化时处理失效下级值。",
+      "rationale": "路径和关联规则可避免重名误选；结构控件用于真实层级，不用于制造复杂度。",
+      "avoid": [
+        "不为平级选项发明层级，不默认整棵树全量展开。",
+        "父子勾选含义不由控件默认值替代业务决定。"
+      ],
+      "requirements": [
+        "明确可选节点、父子关系、搜索和清空语义。",
+        "大数据按当前接口条件延迟加载，并说明失败与重试。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "控件状态、数据与弹层契约"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-BATCH",
+      "category": "pattern",
+      "name": "批量选择与部分结果",
+      "keywords": [
+        "批量",
+        "bulk",
+        "batch",
+        "跨页",
+        "全选",
+        "部分失败"
+      ],
+      "applies_to": {
+        "tasks": [
+          "对多个对象执行同一动作"
+        ],
+        "platforms": [
+          "desktop-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "使用稳定对象标识保存选中集合，明确当前页、跨页或筛选全集；执行前显示对象数量与影响，结束后区分成功、失败与未处理。",
+      "rationale": "批量操作放大误操作后果，需要让范围和处理结果可核对。",
+      "avoid": [
+        "不把当前页全选称为全部结果，不因分页而意外替换选择集合。",
+        "不能用一条成功提示掩盖部分失败，也不能据前端选中跳过逐对象权限校验。"
+      ],
+      "requirements": [
+        "明确取消不改变业务数据、完成后的选中策略与重试范围。",
+        "大规模动作按真实能力处理，不从展示控件推断后端已支持。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "对象、动作与模拟"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-CONFIRM",
+      "category": "pattern",
+      "name": "重要操作的后果与确认",
+      "keywords": [
+        "确认",
+        "危险操作",
+        "confirm",
+        "destructive",
+        "删除",
+        "撤销"
+      ],
+      "applies_to": {
+        "tasks": [
+          "执行影响较大或难恢复的动作"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "对高影响动作明确对象、范围、后果和可恢复性；确认文案表明实际动作，取消保持原状态。低影响且可恢复操作按项目约定处理。",
+      "rationale": "确认用于支持知情决定；所有动作机械弹确认反而削弱注意力。",
+      "avoid": [
+        "不对每个普通操作强制二次确认。",
+        "不以视觉确认替代权限或业务条件校验，不让遮罩关闭隐含业务提交。"
+      ],
+      "requirements": [
+        "确认与取消焦点、键盘和关闭语义清楚。",
+        "动作后果与金额等业务边界由当前规格定义，不由设计知识发明。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "色彩与反馈"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-FEEDBACK",
+      "category": "pattern",
+      "name": "结果反馈与错误恢复",
+      "keywords": [
+        "反馈",
+        "toast",
+        "notification",
+        "alert",
+        "重试",
+        "空态",
+        "loading"
+      ],
+      "applies_to": {
+        "tasks": [
+          "理解动作结果",
+          "从异常继续任务"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "成功更新实际内容并提供适度反馈；字段错误就近说明，影响任务的持续错误保留可操作恢复入口，区分初始空白、无匹配和加载失败。",
+      "rationale": "反馈的位置和持续方式应匹配影响范围，帮助用户知道发生了什么及下一步。",
+      "avoid": [
+        "不让所有按钮都弹同一成功消息，不以转瞬提示承载需要处理的错误。",
+        "不在失败后清空用户输入，不让演示提示冒充真实外部执行。"
+      ],
+      "requirements": [
+        "加载与提交时防止本次有关的重复执行。",
+        "状态通过文字与语义表达，屏幕阅读器反馈和焦点按控件规范处理。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "色彩与反馈"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-DENSITY",
+      "category": "quality",
+      "name": "信息密度与主要任务",
+      "keywords": [
+        "密度",
+        "density",
+        "紧凑",
+        "留白",
+        "阅读",
+        "布局"
+      ],
+      "applies_to": {
+        "tasks": [
+          "多列比较",
+          "浏览与阅读",
+          "填写与处理"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "先确定主要任务和信息优先级，再选择紧凑、标准或舒展布局；整体缩小字号不能替代合理删减和分组。",
+      "rationale": "密度是任务与可用空间的取舍，风格名称不决定信息量。",
+      "avoid": [
+        "不为了填满首屏塞入全部字段，不用极小字体补救布局。",
+        "不在移动端压缩桌面列宽，不为每个字段添加不同层级。"
+      ],
+      "requirements": [
+        "检查长文本、缩放、表格滚动和操作区域。",
+        "具体字号、间距与断点读取规范或项目覆盖值。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "间距、密度与适配"
+        },
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-TYPOGRAPHY",
+      "category": "quality",
+      "name": "文字层级与系统字体",
+      "keywords": [
+        "排版",
+        "字体",
+        "typography",
+        "字间距",
+        "行高",
+        "标题"
+      ],
+      "applies_to": {
+        "tasks": [
+          "阅读内容",
+          "辨认主次",
+          "比较数字"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "沿用项目文字层级，以字号、字重、间距和对齐组织主次；优先设备已有字体，数字按需要使用等宽数字特性。",
+      "rationale": "一致层级和可靠回退有利于阅读与离线交付，跨平台字宽需通过真实布局核对。",
+      "avoid": [
+        "不下载未经授权字体，不用全局压缩中文字距制造风格。",
+        "不将某个大标题的处理复制到所有正文。"
+      ],
+      "requirements": [
+        "字号、行高、字距和字体栈引用已选体系的规范。",
+        "检查长标题、换行、回退字体和缩放。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "字体、字间距与排版"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-COLOR",
+      "category": "quality",
+      "name": "语义配色与可辨识反馈",
+      "keywords": [
+        "配色",
+        "color",
+        "对比度",
+        "主题色",
+        "风险",
+        "状态色"
+      ],
+      "applies_to": {
+        "tasks": [
+          "识别操作",
+          "理解状态",
+          "比较数据"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "先沿用项目主题，区分品牌强调、操作、状态与图表语义；颜色之外配合文字或符号表达状态。",
+      "rationale": "用户需要稳定理解颜色含义；行业名称本身不能证明某种主题色适合当前任务。",
+      "avoid": [
+        "不按产品类型机械指定颜色，不混用不同体系的语义。",
+        "不只靠红绿或微弱透明度传递关键信息。"
+      ],
+      "requirements": [
+        "检查文本、背景、焦点和不同状态的对比与可辨识性。",
+        "色值和主题覆盖由项目或规范维护，推荐不冒充已实测。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "色彩与反馈"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-KEYBOARD",
+      "category": "quality",
+      "name": "键盘、焦点与弹层层级",
+      "keywords": [
+        "键盘",
+        "焦点",
+        "keyboard",
+        "focus",
+        "Escape",
+        "弹层"
+      ],
+      "applies_to": {
+        "tasks": [
+          "不用指针完成操作",
+          "定位错误",
+          "关闭嵌套弹层"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "提供可读标签、明确焦点和合理操作顺序；弹层打开聚焦，关闭恢复来源，嵌套弹层只关闭最上层。",
+      "rationale": "键盘和焦点支撑输入、纠错与辅助访问，是组件行为的一部分。",
+      "avoid": [
+        "不让浮层遮挡当前焦点或输入，不因关闭下拉而同时退出页面。",
+        "不使用不可交互的装饰元素冒充按钮。"
+      ],
+      "requirements": [
+        "实际控件和浮层的焦点行为按目标项目核对。",
+        "可访问性审阅、自动检查和真实辅助技术验证分别说明。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "控件状态、数据与弹层契约"
+        },
+        {
+          "file": "references/design-system.md",
+          "section": "共同质量要求"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-STATES",
+      "category": "quality",
+      "name": "状态、空态与必要信息",
+      "keywords": [
+        "状态",
+        "state",
+        "empty",
+        "error",
+        "权限",
+        "必要信息"
+      ],
+      "applies_to": {
+        "tasks": [
+          "理解当前可做什么",
+          "从空白或失败继续"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "说明正常、空数据、无匹配、校验失败和本次有关的权限／状态限制，提供原因及适用下一步。",
+      "rationale": "状态表达与任务恢复相连，用户需要知道信息缺失还是查询范围没有结果。",
+      "avoid": [
+        "不以统一空白替代所有状态，不将审核完成、资金执行或通知结果混为同一事实。",
+        "不把禁用或隐藏按钮称为真实权限控制已实现。"
+      ],
+      "requirements": [
+        "状态来自具体对象与已确认规则，信息足以支持判断。",
+        "以当前任务为范围补状态，不强制每个控件套相同状态开关。"
+      ],
+      "references": [
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "目标端与边界状态"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-MOBILE",
+      "category": "quality",
+      "name": "移动 Web 的信息与操作重排",
+      "keywords": [
+        "移动",
+        "mobile",
+        "触控",
+        "安全区",
+        "软键盘",
+        "单列"
+      ],
+      "applies_to": {
+        "tasks": [
+          "浏览记录",
+          "短任务处理",
+          "移动填写"
+        ],
+        "platforms": [
+          "mobile-web"
+        ],
+        "density": [
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "保留任务和共享对象语义，按移动信息优先级重排导航、条目、表单与操作，处理安全区和输入遮挡。",
+      "rationale": "移动可用空间、触控与键盘环境不同，需要重新组织任务而非缩小桌面骨架。",
+      "avoid": [
+        "不把宽表格整体缩小到手机，不用固定底栏遮挡输入和错误。",
+        "桌面范围明确时不擅自新增完整移动流程。"
+      ],
+      "requirements": [
+        "目标视口、触控区和移动参数引用规范。",
+        "明确返回来源、必要上下文以及实机键盘是否验证。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "间距、密度与适配"
+        },
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "页面与返回"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-MOTION",
+      "category": "quality",
+      "name": "动效的用途与减少动态效果",
+      "keywords": [
+        "动效",
+        "motion",
+        "animation",
+        "减少动态",
+        "性能"
+      ],
+      "applies_to": {
+        "tasks": [
+          "理解状态过渡",
+          "定位变化"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard",
+          "comfortable"
+        ]
+      },
+      "recommendation": "仅用动效解释关系、状态或反馈，沿用当前组件行为并尊重减少动态效果设置。",
+      "rationale": "持续或复杂动效会占用注意力及运行资源，不能妨碍输入或结果读取。",
+      "avoid": [
+        "不为每页自动增加动画依赖，不以动效独自承载重要状态。",
+        "不全局强制极短动画破坏成熟控件的浮层定位。"
+      ],
+      "requirements": [
+        "检查减少动态效果、连续操作与浮层对齐。",
+        "具体动效参数按项目或组件约定，不在知识中另设一套时长。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "间距、密度与适配"
+        },
+        {
+          "file": "references/component-library.md",
+          "section": "本地维护与离线构建"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-LIST-PERFORMANCE",
+      "category": "quality",
+      "name": "大数据列表与层级内容性能",
+      "keywords": [
+        "大数据",
+        "性能",
+        "performance",
+        "分页",
+        "虚拟列表",
+        "按需加载"
+      ],
+      "applies_to": {
+        "tasks": [
+          "浏览大量记录",
+          "搜索层级对象"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "根据数据规模、比较方式和现有能力选择分页、按需加载或适用的虚拟化，减少无关重渲染并保持查询、选中与焦点语义。",
+      "rationale": "控制渲染规模有利于持续操作，但虚拟化可能影响可访问性、打印和定位，需要结合任务评估。",
+      "avoid": [
+        "不把全部数据与整棵树一次渲染，不默认所有列表都需要虚拟化。",
+        "不因性能优化丢失跨页选择或编辑草稿。"
+      ],
+      "requirements": [
+        "记录演示规模和真实服务端能力边界。",
+        "核对实际组件支持、长内容、滚动与键盘行为；无测量不声称性能已达标。"
+      ],
+      "references": [
+        {
+          "file": "design-spec.md",
+          "section": "场景与组件映射"
+        },
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "承载与源码"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "QUAL-CHART-PERFORMANCE",
+      "category": "quality",
+      "name": "大数据图表的范围与响应",
+      "keywords": [
+        "图表性能",
+        "chart",
+        "aggregation",
+        "采样",
+        "聚合",
+        "下钻"
+      ],
+      "applies_to": {
+        "tasks": [
+          "观察大量时间点",
+          "定位趋势异常"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "按决策所需粒度选择时间范围、聚合和必要下钻；数据量大时采用项目可支持的按需读取或降采样，并解释展示口径。",
+      "rationale": "降低无用绘制量有助响应，但聚合和采样不能掩盖需要定位的异常。",
+      "avoid": [
+        "不为流畅性静默改变统计分母或时间口径，不用演示随机数冒充真实监测。",
+        "不在隐藏图表上持续进行无意义刷新。"
+      ],
+      "requirements": [
+        "标明单位、聚合和是否存在采样，保留所需明细定位。",
+        "按实际工具核查目标规模与视口，不能从组件名称推断性能。"
+      ],
+      "references": [
+        {
+          "file": "references/design-decisions.md",
+          "section": "页面决策"
+        },
+        {
+          "file": "references/prototype-interactions.md",
+          "section": "目标端与边界状态"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    },
+    {
+      "id": "PAT-SCHEDULE",
+      "category": "pattern",
+      "name": "资源与时间占用选择",
+      "keywords": [
+        "预约",
+        "排班",
+        "资源",
+        "时段",
+        "空闲",
+        "甘特",
+        "调度",
+        "resource scheduling",
+        "occupancy"
+      ],
+      "applies_to": {
+        "tasks": [
+          "比较多个资源的占用区间",
+          "查找满足时长的空闲窗口",
+          "选定时段后预约"
+        ],
+        "platforms": [
+          "desktop-web",
+          "mobile-web"
+        ],
+        "density": [
+          "compact",
+          "standard"
+        ]
+      },
+      "recommendation": "按资源行和统一时间轴展示占用及可用区间，明确未开放范围；空闲候选可直接选择并带入表单，记录列表作为历史管理补充。移动端按资源或时间缩小视图，保留候选与完整时段。",
+      "rationale": "核心决策依赖时间位置、持续长度和跨资源比较，记录表格不能单独承担空闲判断；历史事件时间线也不能表达同时占用。",
+      "avoid": [
+        "仅用本人预约列表或统计卡让用户自行推算可用时段。",
+        "把未开放、未知或筛选隐藏的占用当成空闲；只靠颜色或拖拽操作。",
+        "无任务依据强制所有预约采用甘特；将项目进度甘特、事件Timeline与资源调度视图混用。"
+      ],
+      "requirements": [
+        "明确日期、时区、时间范围、粒度和半开区间；占用与时长表达同源。",
+        "按权限展示占用信息，提供键盘选择、完整时段文本及无匹配恢复。",
+        "筛选不掩盖冲突；预约、取消后同步候选、记录和统计；提交重校验。",
+        "按项目既有技术选复合组件并核对能力与许可，本包不声称已提供官方资源调度组件。"
+      ],
+      "references": [
+        {
+          "file": "references/task-representation.md",
+          "section": "资源与时间占用"
+        },
+        {
+          "file": "references/examples/reservation.md",
+          "section": "设计说明"
+        },
+        {
+          "file": "design-spec.md",
+          "section": "任务型复合控件"
+        }
+      ],
+      "source_ids": [
+        "SRC-HANNES"
+      ],
+      "basis": "authored_guidance"
+    }
+  ]
+}

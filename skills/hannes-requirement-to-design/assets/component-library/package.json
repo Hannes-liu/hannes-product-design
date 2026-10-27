@@ -1,0 +1,22 @@
+{
+  "name": "hannes-ant-component-library",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "antd": "6.6.7",
+    "dayjs": "1.11.13",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.11"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

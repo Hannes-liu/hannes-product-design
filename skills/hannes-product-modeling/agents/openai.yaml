@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hannes Product Modeling"
+  short_description: "业务对象、角色权限、状态与数据关系建模，支持业务规格、变更影响和规则一致性检查"
+  default_prompt: "使用 $hannes-product-modeling，围绕当前业务问题梳理相关对象、角色权限、状态动作和数据规则，输出所需模型或业务规格及待确认事项。"
+policy:
+  allow_implicit_invocation: true

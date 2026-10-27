@@ -1,0 +1,36 @@
+# Local tooling and generated verification files
+.DS_Store
+node_modules/
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
+skills/hannes-requirement-to-design/assets/component-library/.cache/
+skills/hannes-requirement-to-design/assets/component-library/test-results/
+*.log
+
+# Private working material: never part of the distributable Skill package
+.private/
+skills/hannes-requirement-to-design/references/licenses/ui-ux-pro-max-MIT.txt
+
+# Local agent settings, credentials and environment overrides
+/.agents/
+/.codex/
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Internal validation and evaluation material at any repository depth
+validation-report.md
+validation-summary.md
+evaluation-scenarios.md
+evaluations/
+tests/
+__tests__/
+test-results/
+playwright-report/
+coverage/
+*.test.*
+*.spec.*
+**/scripts/verify*
